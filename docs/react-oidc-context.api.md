@@ -16,6 +16,7 @@ import type { SignoutPopupArgs } from 'oidc-client-ts';
 import type { SignoutRedirectArgs } from 'oidc-client-ts';
 import type { SignoutResponse } from 'oidc-client-ts';
 import type { SignoutSilentArgs } from 'oidc-client-ts';
+import type { TokenExchangeArgs } from 'oidc-client-ts';
 import { User } from 'oidc-client-ts';
 import { UserManager } from 'oidc-client-ts';
 import type { UserManagerEvents } from 'oidc-client-ts';
@@ -55,6 +56,8 @@ export interface AuthContextProps extends AuthState {
     startSilentRenew(): void;
     // (undocumented)
     stopSilentRenew(): void;
+    // (undocumented)
+    tokenExchange(args: TokenExchangeArgs): Promise<User>;
 }
 
 // @public
@@ -85,7 +88,7 @@ export interface AuthProviderUserManagerProps extends AuthProviderBaseProps {
 
 // @public
 export interface AuthState {
-    activeNavigator?: "signinRedirect" | "signinResourceOwnerCredentials" | "signinPopup" | "signinSilent" | "signoutRedirect" | "signoutPopup" | "signoutSilent";
+    activeNavigator?: "signinRedirect" | "signinResourceOwnerCredentials" | "tokenExchange" | "signinPopup" | "signinSilent" | "signoutRedirect" | "signoutPopup" | "signoutSilent";
     error?: Error;
     isAuthenticated: boolean;
     isLoading: boolean;

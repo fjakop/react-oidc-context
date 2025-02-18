@@ -129,6 +129,7 @@ const userManagerContextKeys = [
     "revokeTokens",
     "startSilentRenew",
     "stopSilentRenew",
+    "tokenExchange",
 ] as const;
 const navigatorKeys = [
     "signinPopup",
